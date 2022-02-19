@@ -10,7 +10,7 @@ import { Currencies, News } from '.';
 const { Title } = Typography;
 
 const Home = () => {
-	const { data, isFetching } = useGetCryptosQuery();
+	const { data, isFetching } = useGetCryptosQuery(10);
 	// TO DO: research into why data?.data?.stats instead of data.data.stats
 	const globalStats = data?.data?.stats;
 
@@ -18,7 +18,8 @@ const Home = () => {
 	
 
 	return (
-		<div>
+    // FOR SELF: <> is called a "react fragment"
+		<>
 			<Title level={ 2 } className='heading'>Global Crypto Stats</Title>
 			<Row>
 				<Col span={ 12 }><Statistic title='Total Currencies' value={ globalStats.total } /></Col>
@@ -37,7 +38,7 @@ const Home = () => {
         <Title level={ 3 } className='show-more'><Link to='/news'>Show More</Link></Title>
       </div>
       <News simplified />
-		</div>
+		</>
 	)
 }
 
